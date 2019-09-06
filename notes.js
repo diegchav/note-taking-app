@@ -36,6 +36,19 @@ const removeNote = function(title) {
   }
 };
 
+const readNote = function(title) {
+  const notes = loadNotes();
+  const noteIndex = notes.findIndex(function(note) {
+    return note.title.toLowerCase() === title.toLowerCase();
+  });
+  if (noteIndex === -1) {
+    console.log(chalk.yellow(`Title doesn't exist`));
+  } else {
+    const note = notes[noteIndex];
+    console.log(JSON.stringify(note, null, 2));
+  }
+};
+
 const loadNotes = function() {
   try {
     const notesJSON = fs.readFileSync(NOTES_JSON).toString();
@@ -58,5 +71,6 @@ const saveNotes = function(notes) {
 
 module.exports = {
   addNote: addNote,
-  removeNote: removeNote
+  removeNote: removeNote,
+  readNote: readNote
 };
