@@ -3,11 +3,10 @@ const chalk = require('chalk');
 
 const NOTES_JSON = 'notes.json';
 
-const addNote = function(title, body) {
+const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicatedNotes = notes.filter(function(note) {
-    return note.title.toLowerCase() === title.toLowerCase();
-  });
+  const duplicatedNotes = notes.filter((note) =>
+    note.title.toLowerCase() === title.toLowerCase());
 
   if (duplicatedNotes.length === 0) {
     const note = {
@@ -22,11 +21,11 @@ const addNote = function(title, body) {
   }
 };
 
-const removeNote = function(title) {
+const removeNote = (title) => {
   const notes = loadNotes();
-  const noteIndex = notes.findIndex(function(note) {
-    return note.title.toLowerCase() === title.toLowerCase();
-  });
+  const noteIndex = notes.findIndex((note) =>
+    note.title.toLowerCase() === title.toLowerCase());
+
   if (noteIndex === -1) {
     console.log(chalk.yellow(`Title doesn't exist`));
   } else {
@@ -36,11 +35,11 @@ const removeNote = function(title) {
   }
 };
 
-const readNote = function(title) {
+const readNote = (title) => {
   const notes = loadNotes();
-  const noteIndex = notes.findIndex(function(note) {
-    return note.title.toLowerCase() === title.toLowerCase();
-  });
+  const noteIndex = notes.findIndex((note) =>
+    note.title.toLowerCase() === title.toLowerCase());
+
   if (noteIndex === -1) {
     console.log(chalk.yellow(`Title doesn't exist`));
   } else {
@@ -49,7 +48,7 @@ const readNote = function(title) {
   }
 };
 
-const listNotes = function() {
+const listNotes = () => {
   const notes = loadNotes();
   if (notes.length === 0) {
     console.log(chalk.yellow('There are currently no notes'));
@@ -58,7 +57,7 @@ const listNotes = function() {
   }
 };
 
-const loadNotes = function() {
+const loadNotes = () => {
   try {
     const notesJSON = fs.readFileSync(NOTES_JSON).toString();
     const notes = JSON.parse(notesJSON);
@@ -69,7 +68,7 @@ const loadNotes = function() {
   }
 };
 
-const saveNotes = function(notes) {
+const saveNotes = (notes) => {
   try {
     const notesJSON = JSON.stringify(notes);
     fs.writeFileSync(NOTES_JSON, notesJSON);
