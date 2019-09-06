@@ -12,5 +12,8 @@
     "note-taking"
   ],
   "author": "diegchav",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^14.0.0"
+  }
 }
