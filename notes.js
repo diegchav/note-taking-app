@@ -24,11 +24,16 @@ const addNote = function(title, body) {
 
 const removeNote = function(title) {
   const notes = loadNotes();
-  const filteredNotes = notes.filter(function(note) {
-    return note.title.toLowerCase() !== title.toLowerCase();
+  const noteIndex = notes.findIndex(function(note) {
+    return note.title.toLowerCase() === title.toLowerCase();
   });
-  saveNotes(filteredNotes);
-  console.log(chalk.green('Note successfully removed'));
+  if (noteIndex === -1) {
+    console.log(chalk.yellow(`Title doesn't exist`));
+  } else {
+    notes.splice(noteIndex, 1);
+    saveNotes(notes);
+    console.log(chalk.green('Note successfully removed'));
+  }
 };
 
 const loadNotes = function() {
