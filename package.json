@@ -2,9 +2,9 @@
   "name": "notes-app",
   "version": "1.0.0",
   "description": "Simple note-taking cli app",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "keywords": [
     "nodejs",
