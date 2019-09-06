@@ -22,6 +22,15 @@ const addNote = function(title, body) {
   }
 };
 
+const removeNote = function(title) {
+  const notes = loadNotes();
+  const filteredNotes = notes.filter(function(note) {
+    return note.title.toLowerCase() !== title.toLowerCase();
+  });
+  saveNotes(filteredNotes);
+  console.log(chalk.green('Note successfully removed'));
+};
+
 const loadNotes = function() {
   try {
     const notesJSON = fs.readFileSync(NOTES_JSON).toString();
@@ -43,5 +52,6 @@ const saveNotes = function(notes) {
 };
 
 module.exports = {
-  addNote: addNote
+  addNote: addNote,
+  removeNote: removeNote
 };
