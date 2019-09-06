@@ -1,6 +1,15 @@
 const yargs = require('yargs');
+const dotenv = require('dotenv');
+const chalk = require('chalk');
 
-const notes = require('./notes.js');
+// Load env variables.
+dotenv.config();
+
+// Connect to db.
+const db = require('./src/db/database');
+
+// Load controller.
+const notes = require('./src/controllers/notes');
 
 // add command
 yargs.command({
