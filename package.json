@@ -1,0 +1,16 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "Simple note-taking cli app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "nodejs",
+    "cli",
+    "note-taking"
+  ],
+  "author": "diegchav",
+  "license": "ISC"
+}
