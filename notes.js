@@ -49,6 +49,15 @@ const readNote = function(title) {
   }
 };
 
+const listNotes = function() {
+  const notes = loadNotes();
+  if (notes.length === 0) {
+    console.log(chalk.yellow('There are currently no notes'));
+  } else {
+    console.log(JSON.stringify(notes, null, 2));
+  }
+};
+
 const loadNotes = function() {
   try {
     const notesJSON = fs.readFileSync(NOTES_JSON).toString();
@@ -72,5 +81,6 @@ const saveNotes = function(notes) {
 module.exports = {
   addNote: addNote,
   removeNote: removeNote,
-  readNote: readNote
+  readNote: readNote,
+  listNotes: listNotes
 };
