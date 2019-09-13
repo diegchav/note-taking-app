@@ -27,6 +27,7 @@ db
 })
 .catch((err) => {
   console.log(chalk.red('DB connection error: ', err.message));
+  process.exit(1);
 });
 
 const gracefulExit = () => {
