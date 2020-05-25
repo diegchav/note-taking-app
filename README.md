@@ -78,5 +78,3 @@ Successfully delete note
 $ node app.js list
 There are currently no notes
 ```
-
-## Running MongoDB in a docker container
